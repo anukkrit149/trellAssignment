@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_field %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>{{ text }}</h1>
+    <div class="row">
+                <div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                        <span class="card-title"></span>
+                        <form method="post">
+                            {% if messages %}
+                                        {% for message in messages %}
+                                            {% if message.tags != 'error' %}
+                                                <div class="alert alert-{{ message.tags }}">
+                                            {% else %}
+                                                <div class="alert alert-danger">
+                                            {% endif %}
+                                            {{ message }}
+                                            </div>
+                                        {% endfor %}
+
+                            {% endif %}
+                            {% csrf_token %}
+                            {{ form|crispy  }}
+                            <div class="card-action">
+                                <button class="btn btn-light btn-block">Submit</button>
+                                <button onclick="window.location={% url 'dashboard' %}" class="btn btn-light btn-block">Back To Dashboard</button>
+                            </div>
+                        </form>
+                        </div>
+
+                    </div>
+            </div>
+
+
+
+
+        </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>{{ text }}</h1>
+    {% if form is not None %}
+        <form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button class="btn btn-light btn-block">Search</button>
+    <button onclick="window.location={% url 'dashboard' %}" class="btn btn-light btn-block">Back To Dashboard</button>
+    </form>
+    {% endif %}
+    <div class="row">
+
+            {% for movie in movies %}
+                <div class="col-4 col-xl-3 col-lg-4 col-md-12 col-sm-12">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                        <span class="card-title">{{ movie.movieName }}</span>
+                        <p>{{ movie.description }}</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="#">{{ movie.directorName }}</a>
+                            <a href="#">{{ movie.duration }}</a>
+                        </div>
+                    </div>
+            </div>
+            {% endfor %}
+
+
+
+        </div>
+{% endblock %}

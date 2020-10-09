@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trell Movie App</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body >
+    {% url 'dashboard' as dashboard %}
+    <nav class="red accent-1">
+    <div class="nav-wrapper">
+      <a disabled class="brand-logo ml-2">
+          TRELL Movie App
+{#          <img src="https://media-exp1.licdn.com/dms/image/C560BAQHyCtATJaW8oA/company-logo_200_200/0?e=1610582400&v=beta&t=Y8HAHb41bETOx4dwwwRg2GVXNfoBaib8SThPyAzByYI" max-height="100px">#}
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        {% if user.is_authenticated %}
+          <li><a class="btn btn-light" href="{% url 'search' %}">Search Movie</a></li>
+          <li><a class="btn btn-light" href="{% url 'addMovie' %}">Add Movie</a></li>
+          <li><a class="btn btn-light" href="{% url 'addShows' %}">Add Show</a></li>
+          <li><a class="btn btn-light" href="{% url 'buyTickets' %}">Buy Tickets</a></li>
+          <li><a class="btn btn-light" href="{% url 'Logout' %}">Logout</a></li>
+        {% endif %}
+        <li><a href="https://trell.co/">TRELL</a></li>
+        <li><a href="https://github.com/anukkrit149">Developer</a></li>
+      </ul>
+    </div>
+  </nav>
+{#    <div class="section no-pad-bot" id="index-banner">#}
+{#    <div class="container">#}
+{#      <br><br>#}
+{#      <h1 class="header center orange-text">Starter Template</h1>#}
+{#      <div class="row center">#}
+{#        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>#}
+{#      </div>#}
+{#      <div class="row center">#}
+{#        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>#}
+{#      </div>#}
+{#      <br><br>#}
+{##}
+{#    </div>#}
+{#  </div>#}
+    <div class="container">
+    <div class="section">
+        {% block content %}
+        {% endblock %}
+    </div>
+  </div>
+
+
+{#----------------------------JS Files---------------------------------------------#}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
